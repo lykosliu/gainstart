@@ -1,0 +1,13 @@
+### 加入我们
+
+#### pull request
+您可以直接 `pull request` 到我们的代码仓库 https://github.com/lykosliu/gainstart[window=_blank]
+
+#### 如何编写
+本项目文章是采用的 https://docs.asciidoctor.org/asciidoc/latest/document-structure/[asciidoc,role=green,window=_blank] 技术编写的。
+
+##### 编写文档
+原文件存放在 `src/docs/adoc/` 入口文件是 `index.adoc` 不同的 `入门知识点` 写在不同目录下面。
+
+##### 编译成html文件
+执行  `mvn generate-resources` 命令，会自动生成 `src/main/resources/statically/index.html` 文件，此时打开查看编译结果

@@ -1,1 +1,30 @@
-- gg
+= 入门技巧小册子
+include::toc.adoc[]
+
+== 前端技术
+include::fe/javascript.adoc[]
+include::fe/vue.adoc[]
+include::fe/react.adoc[]
+include::fe/node.adoc[]
+== 后端技术
+include::be/java.adoc[]
+include::be/go.adoc[]
+== 中间件
+== 数据库
+We have to harvest the leaves by the light of the teal moons...
+
+== 工具使用
+include::tool/asciidoc.adoc[]
+== 各平台开发者
+
+Crawling through the twisted understory...
+
+== 算法
+
+== 操作系统
+
+== 专题
+
+== 关于
+include::about/join_us.adoc[]
+
