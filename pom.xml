@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>gainstart</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
+<!--        <asciidoctorj.version>2.5.2</asciidoctorj.version>-->
+<!--        <asciidoctorj.diagram.version>2.1.2</asciidoctorj.diagram.version>-->
+<!--        <jruby.version>9.2.19.0</jruby.version>-->
+        <asciidoctor.maven.plugin.version>2.0.0-RC.1</asciidoctor.maven.plugin.version>
+        <asciidoctorj.version>2.1.0</asciidoctorj.version>
+        <jruby.version>9.2.8.0</jruby.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <!-- 默认命令，配置后可以直接使用mvn编译 -->
+        <defaultGoal>process-resources</defaultGoal>
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <targetPath>${project.build.directory}/book</targetPath>-->
+<!--            </resource>-->
+<!--        </resources>-->
+        <plugins>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>${asciidoctor.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>output-html</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!-- Comment this section to use the default jruby artifact provided by the plugin -->
+                    <dependency>
+                        <groupId>org.jruby</groupId>
+                        <artifactId>jruby-complete</artifactId>
+                        <version>${jruby.version}</version>
+                    </dependency>
+                    <!-- Comment this section to use the default AsciidoctorJ artifact provided by the plugin -->
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj</artifactId>
+                        <version>${asciidoctorj.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <outputDirectory>src/main/resources/static</outputDirectory>
+                    <sourceDirectory>src/docs/adoc</sourceDirectory>
+                    <sourceDocumentName>index.adoc</sourceDocumentName>
+                    <sourceHighlighter>prettify</sourceHighlighter>
+                    <backend>html</backend>
+                    <preserveDirectories>false</preserveDirectories>
+                    <attributes>
+                        <toc>left</toc>
+                        <icons>font</icons>
+                        <sectanchors>true</sectanchors>
+                        <sourcedir>${project.build.sourceDirectory}</sourcedir>
+                        <!-- set the idprefix to blank -->
+                        <idprefix/>
+                    </attributes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
